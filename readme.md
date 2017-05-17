@@ -19,8 +19,26 @@ Let's say we knew the communities. Then we could calculate the probability of al
 the communities, we just have to find the assignments to communities with the highest likelihood. Hence, the name: Maximum Likelihood Estimation
 
 The likelihood for our graph looks like this:
-![equation](https://latex.codecogs.com/gif.latex?l(G)=\prod_{(u,v)&space;\in&space;E}&space;p_{uv}&space;\prod_{(u,v)not\&space;in&space;E}&space;1-p_{uv})
+![equation]( https://latex.codecogs.com/gif.latex?l(G)=\prod_{(u,v)&space;\in&space;E}&space;p_{uv}&space;\prod_{(u,v)not\&space;in&space;E}&space;1-p_{uv} )
 
-That leaves us to define `p_{uv}`, the probability of person `u` and `v` to be frieds. We model this by defining community preferences, `f`.
+<!---
+[//](l(G)=\prod_{(u,v) \in E} p_{uv} \prod_{(u,v)not\ in E} 1-p_{uv})
+-->
+
+That leaves us to define `p_{uv}`, the probability of person `u` and `v` to be frieds. We model this by defining community preferences, `f`. For two `f` with large inner product, we want a high probability of friendship. Probabilities should be between 0 and 1. So we get:
+![equation](https://latex.codecogs.com/gif.latex?p_{uv}&space;=&space;1-e^{-f_u&space;^T&space;f_v})
+
+# And how do we find the commmunities?
+We must assign people to communities with the highest likelihood. As we can differentiate all formulas, we can use gradient ascent. We start with some initial preference matrix, `F`. And we iteratively update this matrix to improve the likelihood. Note  that the likelihood is not convex, so we'll end in a local maximum, but that's okay for now.
+
+# What does the algorithm look like?
+For starters, here's an example of a social network. To see how we generate the data and plot it, look at `/util/generate_data.py` for the AGM and `ui/index.html` for the D3.js code.
+
+![Social network](http://robromijnders.github.io)
+An edge represents a friendship. The fill of a node refers to its community.
+
+![Social network2](http://robromijnders.github.io)
+Now, the outer stroke represents the community with highest preference. (_Note that we might as well plot multiple communities per node, but I'm not that proficient with D3.js. Please reach out if you can help me_)
+
 
 As always, I am curious to any comments and questions. Reach me at romijndersrob@gmail.com
