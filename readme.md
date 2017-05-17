@@ -35,10 +35,14 @@ We must assign people to communities with the highest likelihood. As we can diff
 For starters, here's an example of a social network. To see how we generate the data and plot it, look at `/util/generate_data.py` for the AGM and `ui/index.html` for the D3.js code.
 
 ![Social network](http://robromijnders.github.io)
-An edge represents a friendship. The fill of a node refers to its community.
+An edge represents a friendship. This marks the starting point for any social graph problem, you're given a bunch of people (nodes) and their friendships (edges)
+
 
 ![Social network2](http://robromijnders.github.io)
-Now, the outer stroke represents the community with highest preference. (_Note that we might as well plot multiple communities per node, but I'm not that proficient with D3.js. Please reach out if you can help me_)
+Now, we plot the results of our algorithm. The fill represents the _true_ communtiy. The outer stroke 
+ represents the community with highest preference. (_Note that we might as well plot multiple communities per node, but I'm not that proficient with D3.js. Please reach out if you can help me_)
+ 
+I cherry picked these examples for the purposes of explaining. You can check `im/` for more plots or play with the code and make your own
 
 
 As always, I am curious to any comments and questions. Reach me at romijndersrob@gmail.com

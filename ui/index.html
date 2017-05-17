@@ -71,7 +71,7 @@ d3.json("assets/data.json", function(error, graph) {
     .selectAll("circle")
     .data(graph.nodes)
     .enter().append("circle")
-      .attr("r", 10)
+      .attr("r", 6)
       .attr("fill", function(d) {
           if (d.group.length>1){
               return 'url(#grad'+d.group+')'
@@ -79,9 +79,7 @@ d3.json("assets/data.json", function(error, graph) {
               return color(d.group)
           }
       })
-      .style('stroke', function(d) {
-          return color(4+parseInt(d.assigned))
-      })
+      .style('stroke', function(d) {return color(4+parseInt(d.assigned))})
       .style('stroke-width',3)
       .call(d3.drag()
           .on("start", dragstarted)
