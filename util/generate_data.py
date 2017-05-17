@@ -56,7 +56,7 @@ class Datagen():
                     at_least_one = True
                     p_nedge *= 1.-self.p[comm_shared]
                 if not at_least_one:
-                    p_nedge = 0.98
+                    p_nedge = 0.99
 
                 p_edge = 1-p_nedge
                 if random() < p_edge:
@@ -83,7 +83,7 @@ def gen_json(A,p2c,F_argmax=None):
 
 
 if __name__ == "__main__":
-    datagen = Datagen(30, [.3, .3, .2, .2],[.4, .3, .3, .2] , .05)
+    datagen = Datagen(40, [.3, .3, .2, .2],[.1, .5, .2, .2] , .05)
     datagen.gen_assignments()
     datagen.gen_adjacency()
     p2c = datagen.person2comm
